@@ -20,6 +20,19 @@ const styles = StyleSheet.create({
 })
 
 class ReactSpotifyApi extends Component {
+
+  // This function will have to go within a service folder
+  searchForAMovie() {
+    return fetch('https://api.spotify.com/v1/search?q=tania%20bowra&type=artist')
+      .then(response => response.json());
+  }
+
+  // When the page is searching, show the element
+  componentWillMount() {
+    this.searchForAMovie()
+      .then(json => console.log(json));
+  }
+
   render() {
     return (
       <View style={styles.container}>
