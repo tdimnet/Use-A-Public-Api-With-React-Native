@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -21,6 +22,14 @@ const styles = StyleSheet.create({
 
 class ReactSpotifyApi extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      popularity: '',
+    }
+  }
+
   // This function will have to go within a service folder
   searchForAMovie() {
     return fetch('https://api.spotify.com/v1/search?q=tania%20bowra&type=artist')
@@ -30,7 +39,14 @@ class ReactSpotifyApi extends Component {
   // When the page is searching, show the element
   componentWillMount() {
     this.searchForAMovie()
-      .then(json => console.log(json));
+      .then((json) => {
+        console.log(json.artists.items[0]);
+        this.setState({
+          name: json.artists.items[0].name,
+          popularity: json.artists.items[0].popularity,
+        })
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -38,6 +54,12 @@ class ReactSpotifyApi extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome} >
           Search an album from Spotify
+        </Text>
+        <Text>
+          Artist Name: {this.state.name}
+        </Text>
+        <Text>
+          Artist Popularity: {this.state.popularity}
         </Text>
       </View>
     );
