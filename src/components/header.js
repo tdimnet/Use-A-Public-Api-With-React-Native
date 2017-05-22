@@ -7,10 +7,11 @@ import {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#333',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
+    height: 100,
+    marginTop: 20,
     paddingTop: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -19,7 +20,8 @@ const styles = {
     position: 'relative'
   },
   textStyle: {
-    fontSize: 20
+    fontSize: 20,
+    color: '#eee'
   }
 };
 
@@ -29,7 +31,9 @@ const Header = (props) => {
 
   return (
     <View style={viewStyle}>
-      <Text style={textStyle}>Hello World</Text>
+      <Text style={textStyle}>
+        {props.headerText}
+      </Text>
     </View>
   );
 };

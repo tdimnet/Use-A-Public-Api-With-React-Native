@@ -6,13 +6,14 @@ import {
   Image,
 } from 'react-native';
 import Header from './src/components/header';
-
+import AlbumsList from './src/components/albumsList';
 
 class ReactSpotifyApi extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header />
+        <Header headerText={'Search an album with the Spotify API'} />
+        <AlbumsList />
       </View>
     );
   }
