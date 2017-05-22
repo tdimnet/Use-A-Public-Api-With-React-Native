@@ -27,6 +27,7 @@ class ReactSpotifyApi extends Component {
     this.state = {
       name: '',
       popularity: '',
+      source: 'https://facebook.github.io/react/img/logo_og.png'
     }
   }
 
@@ -40,10 +41,10 @@ class ReactSpotifyApi extends Component {
   componentWillMount() {
     this.searchForAMovie()
       .then((json) => {
-        console.log(json.artists.items[0]);
         this.setState({
           name: json.artists.items[0].name,
           popularity: json.artists.items[0].popularity,
+          source: json.artists.items[0].images[0].url,
         })
       })
       .catch(error => console.log(error));
@@ -61,6 +62,10 @@ class ReactSpotifyApi extends Component {
         <Text>
           Artist Popularity: {this.state.popularity}
         </Text>
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: this.state.source}}
+        />
       </View>
     );
   }
