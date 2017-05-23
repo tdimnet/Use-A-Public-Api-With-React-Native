@@ -18,14 +18,28 @@ const AlbumDetails = ({ album }) => {
   } = styles;
 
   return (
-    <View>
-      <View>
-        <Text>{ title } - { artist }</Text>
-      </View>
-      <View>
-        <Image style={{height: 40, width: 40}} source={{ uri: thumbnail_image }} />
-      </View>
-    </View>
+    <Card>
+      <CardSection>
+        <View style={thumbnailContainerStyle}>
+          <Image
+            style={thumbnailStyle}
+            source={{ uri: thumbnail_image }}
+          />
+        </View>
+        <View style={headerContentStyle}>
+          <Text style={headerTextStyle} >{title}</Text>
+          <Text>{artist}</Text>
+        </View>
+      </CardSection>
+
+      <CardSection>
+        <Image
+          style={imageStyle}
+          source={{ uri: image }}
+        />
+      </CardSection>
+
+    </Card>
   );
 }
 
