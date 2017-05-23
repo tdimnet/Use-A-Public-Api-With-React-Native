@@ -20,14 +20,18 @@ class AlbumsList extends Component {
 
   renderAlbum() {
     return this.state.albums.map(album =>
-      <AlbumDetail key={album.title} album={album} />
+      <AlbumDetails key={album.title} album={album} />
     );
   }
 
 
   render() {
+    console.log(this.state.albums);
+
     return (
-      <Text>Foo</Text>
+      <ScrollView>
+        {this.renderAlbum()}
+      </ScrollView>
     );
   }
 }
