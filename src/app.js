@@ -13,7 +13,7 @@ const App = () => {
 
     return (
       <View style={{ flex: 1 }}>
-        <Header headerText={'Search an album with the Spotify API'} />
+        <Header headerText={'Display albums from an API'} />
         <AlbumsList />
       </View>
     );
